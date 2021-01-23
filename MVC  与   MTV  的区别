@@ -1,0 +1,11 @@
+Web：
+   MVC:
+   Model      模型（处理数据库传递到前端的数据操作）
+   View       视图（前端的网页展示）
+   Controler  控制器（响应前端到后端的数据传递等操作）
+   
+Python:
+   MTV:
+   Model      模型
+   Template   模板（前端展示）
+   View       视图（前端到后端Python代码的控制作用） 
