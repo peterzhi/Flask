@@ -1,0 +1,31 @@
+#设置路由装饰器，以‘/’为默认结尾
+@app.route('/')
+
+#根据请求的不同路径访问不同函数
+@app.route('/index')
+    def index():
+        return"111"
+@app.route('/test')
+    def index():
+        return"222"
+
+#run(host='ip地址', port='端口号')
+#ip + 端口号 对应一个程序，host改为0.0.0.0,则外网可以访问，默认为本机。
+#服务器开发环境包括development、production、testing
+#debug = True : 开启debug模式，自动从服务器加载最新代码，适用于development环境
+#debug = False : 默认，不会自动更新，适用于production环境
+#注意:在启动前设置端口号！
+app.run(host = '127.0.0.1:5000', port = '8080', debug = 'True')
+
+#一般设置配置文件setting.py对服务器的启动脚本进行基本设置，再导入，利用app.config.from_object(配置文件名)
+app.config.from_object(seettings)
+
+#request与response
+#request：
+#请求行：URL(访问地址);method(请求方法): get/post;...
+#请求头:key:value(键值对)
+#请求体:一般post才有
+#response：
+#响应行:状态码 200-OK/404-ERROR/500/302/...
+#响应头:key:value(键值对)  文本的配置信息
+#响应体:html代码
