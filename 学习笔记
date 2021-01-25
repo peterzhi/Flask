@@ -1,5 +1,14 @@
 #设置路由装饰器，以‘/’为默认结尾
 @app.route('/')
+    def index():
+        return"111"
+#路由装饰器实现原理：
+#def route(self, rule, **option):
+#    def decorator(f):
+#        self.add_url_rule(rule, endpoint, f, **options)
+#        return f
+#    rerturn decorator
+#将rule字符串与视图函数绑定，通过add_url_rule实现。
 
 #根据请求的不同路径访问不同函数
 @app.route('/index')
@@ -9,6 +18,17 @@
     def index():
         return"222"
 
+#路由路径中通过'<name>'或'<类型:name>'添加变量,标记会作为关键字参数传递给函数
+#转换器类型包括int,float,str（不含'/'）,path（包含'/'），uuid
+#结果只能返回str,tuple,dict等字符串类型
+@app.route('/test/<a>')
+    def index(a):
+        return a
+@app.route('/test/<int:a>')
+    def index(a):
+        return str(a)
+
+
 #run(host='ip地址', port='端口号')
 #ip + 端口号 对应一个程序，host改为0.0.0.0,则外网可以访问，默认为本机。
 #服务器开发环境包括development、production、testing
@@ -17,8 +37,10 @@
 #注意:在启动前设置端口号！
 app.run(host = '127.0.0.1:5000', port = '8080', debug = 'True')
 
+
 #一般设置配置文件setting.py对服务器的启动脚本进行基本设置，再导入，利用app.config.from_object(配置文件名)
 app.config.from_object(seettings)
+
 
 #request与response
 #request：
@@ -29,3 +51,20 @@ app.config.from_object(seettings)
 #响应行:状态码 200-OK/404-ERROR/500/302/...
 #响应头:key:value(键值对)  文本的配置信息
 #响应体:html代码
+
+
+#render_template:是融合网页代码与python的接口函数，将写好的网页的名称作为参数传入并返回新变量，则网页成功嵌套入python项目中。
+#网页文件一般都在Template文件夹下寻找
+@app.route('/index')
+def register():
+    r = render_template('网页名')
+    return r
+
+
+#打印路由规则表：由" '路由路径'->'view函数名' "的多个元素组成的列表
+print(app.url_map)
+
+
+#获取提交数据。通过按钮提交的数据传递到request.args形成的字典中，用get方法获取表单元素的名称对应的值，即传递的数据。
+#所有的关键字均为html表单中的每个元素的单独的设定名称；表单form的action为传递后台的路由路径名
+request.args.get('关键字')
