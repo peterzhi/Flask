@@ -65,6 +65,8 @@ def register():
 print(app.url_map)
 
 
-#获取提交数据。通过按钮提交的数据传递到request.args形成的字典中，用get方法获取表单元素的名称对应的值，即传递的数据。
+#获取提交数据。通过按钮提交的数据传递到request.args形成的字典中，只能用get方法获取表单元素的名称对应的值(post不行)，即传递的数据。
 #所有的关键字均为html表单中的每个元素的单独的设定名称；表单form的action为传递后台的路由路径名
-request.args.get('关键字')
+#如果请求method是post则需要用request.form.get()
+request.args.get('关键字')-----get方式
+request.form.get('关键字')-----post方式，但app.route()中要添加methods=['GET', 'POST']
