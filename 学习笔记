@@ -78,4 +78,8 @@ j_str = json.dumps(users)
 
 #redirect函数会产生两次响应:1.302状态码 + location指向的地址名；2.重定向地址的内容
 return redirect('/路径名')
+#url_for()：路径反向解析。提供route装饰器中的endpoint参数名(相当于装饰器或view函数的别名)读取对应路由路径，用于路径复杂情况。
+url = url_for('index')
+项目常用写法：return redirect(url_for('index'))
+
 
