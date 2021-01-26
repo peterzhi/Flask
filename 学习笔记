@@ -20,7 +20,7 @@
 
 #路由路径中通过'<name>'或'<类型:name>'添加变量,标记会作为关键字参数传递给函数
 #转换器类型包括int,float,str（不含'/'）,path（包含'/'），uuid
-#结果只能返回str,tuple,dict等字符串类型
+#视图函数的返回值是一个响应对象，只能为str,tuple,dict,response,WSGI等字符串类型
 @app.route('/test/<a>')
     def index(a):
         return a
@@ -70,3 +70,12 @@ print(app.url_map)
 #如果请求method是post则需要用request.form.get()
 request.args.get('关键字')-----get方式
 request.form.get('关键字')-----post方式，但app.route()中要添加methods=['GET', 'POST']
+
+
+#列表中的所有元素转化成一个字符串:json字符串
+j_str = json.dumps(users)
+
+
+#redirect函数会产生两次响应:1.302状态码 + location指向的地址名；2.重定向地址的内容
+return redirect('/路径名')
+
