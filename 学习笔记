@@ -20,7 +20,7 @@
 
 #路由路径中通过'<name>'或'<类型:name>'添加变量,标记会作为关键字参数传递给函数
 #转换器类型包括int,float,str（不含'/'）,path（包含'/'），uuid
-#视图函数的返回值是一个响应对象，只能为str,tuple,dict,response,WSGI等字符串类型
+#视图函数的返回值是一个response对象，只能为str,tuple,dict,response,WSGI等字符串类型
 @app.route('/test/<a>')
     def index(a):
         return a
@@ -83,3 +83,38 @@ url = url_for('index')
 项目常用写法：return redirect(url_for('index'))
 
 
+#视图函数返回值(response响应)：
+#1.str                  (response对象)
+#2.dict                 (json格式)
+#2.response对象         (response对象)
+#2.make_response()      (response对象)
+#2.redirect()           (重定向，302)
+#2.render_template()    (模板渲染)
+
+
+#模板语法(jinja2引擎)
+#声明变量:{{ var }}
+#在模板中获取view传递的变量
+#若模板文件变量名与传参不匹配，则返回空字符
+name = 'peter'
+age = 23
+return render_template('show.html', name=name, age=age)
+
+#模板可通过{{ a.0 }}、{{ a[0] }}、{{ a.get('name') }}访问列表、字典元素、类属性
+#服务器注释：{#  #}        浏览器注释：<!--  -->
+
+#for循环:
+{% for i in lists %}
+    {{ i }}
+{% endfor %}
+#if条件：
+{% if a|length > 3 %}
+    {{ a }}
+{% endif %}
+#html添加样式表:
+<style>
+    .a{
+        color:blue;
+    }
+</style>
+<li class='a'>样式</li>
