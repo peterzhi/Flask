@@ -118,12 +118,18 @@ return render_template('show.html', name=name, age=age)
 </tr>
 #for的内置变量loop:
 #loop.index:正序索引(从1开始)；loop.index0:正序索引(从0开始)；loop.revindex:逆序索引(到1结束)；loop.revindex0:逆序索引(到0结束)；
+
 #html添加样式表:
+#类样式：
 <style>
     .a{color:blue;}
 </style>
 <li class='a'>样式</li>
-
+#标签样式：
+<style>
+    #head{color:blue;}
+    #head ul{list-style:none;}
+</style>
 
 #模板过滤器:{% 变量名|过滤器 %}  {% 变量名|过滤器(*args) %}
 #字符串常用过滤器操作：
@@ -133,3 +139,20 @@ return render_template('show.html', name=name, age=age)
 #提取首元素：first;提取尾元素：last;求和：sum;排序：sort;求长：length
 #字典常用过滤器操作：
 #获取键：list1.keys();获取值：list1.keys()；获取键值对：list1.items(),两个参数
+
+
+#自定义过滤器:
+#1.调用flask模块中的add_route_filter方法完成。
+app.add_route_filter(新函数名， '自定义函数名')
+#2.通过装饰器定义完成
+@app.template_filter('自定义函数名')
+def fun():
+    return 'abc'
+#(一定要有返回值。否则无法显示!)
+
+
+#模板继承：
+{% block id名称 %}
+    首页
+{% endblock %}
+#需要模板继承的情况：部分内容需要修改时
