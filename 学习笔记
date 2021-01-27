@@ -111,10 +111,25 @@ return render_template('show.html', name=name, age=age)
 {% if a|length > 3 %}
     {{ a }}
 {% endif %}
+#(记住不要忘记结束语句!)
+#if可以添加进标签里判断是否改变局部(简化代码)
+<tr {%if loop.last %} style="background-color:black" {% endif %}>
+    ......
+</tr>
+#for的内置变量loop:
+#loop.index:正序索引(从1开始)；loop.index0:正序索引(从0开始)；loop.revindex:逆序索引(到1结束)；loop.revindex0:逆序索引(到0结束)；
 #html添加样式表:
 <style>
-    .a{
-        color:blue;
-    }
+    .a{color:blue;}
 </style>
 <li class='a'>样式</li>
+
+
+#模板过滤器:{% 变量名|过滤器 %}  {% 变量名|过滤器(*args) %}
+#字符串常用过滤器操作：
+#防止符号转义，保留正常html标签效果：{% 变量名|safe %}
+#词首大写：capitalize;大小写转换：lower upper;一句话每词首大写：title;逆序:reverse;格式化匹配:format()
+#列表常用过滤器操作：
+#提取首元素：first;提取尾元素：last;求和：sum;排序：sort;求长：length
+#字典常用过滤器操作：
+#获取键：list1.keys();获取值：list1.keys()；获取键值对：list1.items(),两个参数
