@@ -131,6 +131,11 @@ return render_template('show.html', name=name, age=age)
     #head ul{list-style:none;}
 </style>
 
+#样式表链接：(地址链接均采用‘{{ url_for('static', filename='static路径下相对路径') }}’)
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+#图片链接：
+<img src="{{ url_for('static', filename='images/a1.png') }}" alt="">
+
 #模板过滤器:{% 变量名|过滤器 %}  {% 变量名|过滤器(*args) %}
 #字符串常用过滤器操作：
 #防止符号转义，保留正常html标签效果：{% 变量名|safe %}
@@ -157,8 +162,9 @@ def fun():
 {% block id名称 %}
     填充内容
 {% endblock %}
-
 {% extends '父模板名.html' %}
 
+#模板包含：（非全部，部分页面需要相同的模板）
+{% include 'templates下路径文件夹/xxx.html' %}
 
 
