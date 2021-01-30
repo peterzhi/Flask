@@ -93,7 +93,11 @@ url = url_for('index')
 
 
 #模板语法(jinja2引擎)
+
 #声明变量:{{ var }}
+{%set username='peter' %} #全局变量
+{% with num=1 %} {{ num }} {% endwith %} #局部变量
+
 #在模板中获取view传递的变量
 #若模板文件变量名与传参不匹配，则返回空字符
 name = 'peter'
@@ -167,4 +171,10 @@ def fun():
 #模板包含：（非全部，部分页面需要相同的模板）
 {% include 'templates下路径文件夹/xxx.html' %}
 
+#宏macro：(jinja2的一个函数，返回html字符串),利于代码复用
+#两种定义方式:
+#1.模板中直接定义
+#2.在模板macro.html中定义所有宏，使用时的导入方法：
+{% import 'macro.html' as xxx %}
+{{ xxx.宏名(参数) }}
 
