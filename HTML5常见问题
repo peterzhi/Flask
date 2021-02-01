@@ -11,3 +11,6 @@
 </style>
 
 href="javascript:;": 取消href的链接功能
+
+#location:地址栏对象
+location.href = '/index?username=' + username : 更改链接地址并通过GET方式传参
