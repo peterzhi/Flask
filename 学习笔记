@@ -53,8 +53,8 @@ app.config.from_object(seettings)
 #响应体:html代码
 
 
-#render_template:是融合网页代码与python的接口函数，将写好的网页的名称作为参数传入并返回新变量，则网页成功嵌套入python项目中。
-#网页文件一般都在Template文件夹下寻找
+#render_template:是html代码与python嵌套的接口函数，将需渲染的html作为参数传入并返回新变量。
+#html一般在templates文件夹下寻找
 @app.route('/index')
 def register():
     r = render_template('网页名')
@@ -98,7 +98,7 @@ url = url_for('index')
 {%set username='peter' %} #全局变量
 {% with num=1 %} {{ num }} {% endwith %} #局部变量
 
-#在模板中获取view传递的变量
+#view传参给渲染模板
 #若模板文件变量名与传参不匹配，则返回空字符
 name = 'peter'
 age = 23
