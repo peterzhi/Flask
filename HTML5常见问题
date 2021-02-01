@@ -1,0 +1,13 @@
+#html添加样式表:
+#类样式：
+<style>
+    .a{color:blue;}
+</style>
+<li class='a'>样式</li>
+#标签样式：
+<style>
+    #head{color:blue;}
+    #head ul{list-style:none;}
+</style>
+
+href="javascript:;": 取消href的链接功能
