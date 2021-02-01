@@ -123,17 +123,6 @@ return render_template('show.html', name=name, age=age)
 #for的内置变量loop:
 #loop.index:正序索引(从1开始)；loop.index0:正序索引(从0开始)；loop.revindex:逆序索引(到1结束)；loop.revindex0:逆序索引(到0结束)；
 
-#html添加样式表:
-#类样式：
-<style>
-    .a{color:blue;}
-</style>
-<li class='a'>样式</li>
-#标签样式：
-<style>
-    #head{color:blue;}
-    #head ul{list-style:none;}
-</style>
 
 #样式表链接：(地址链接均采用‘{{ url_for('static', filename='static路径下相对路径') }}’)
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
