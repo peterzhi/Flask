@@ -167,6 +167,7 @@ def fun():
 {% import 'macro.html' as xxx %}
 {{ xxx.宏名(参数) }}
 
+
 #蓝图：把视图及其他代码注册到蓝图，然后在工厂函数中把蓝图注册到应用。
 user_bp = Blueprint('user', __name__)
 
@@ -196,8 +197,15 @@ def init():
     print('初始化')
 #终端运行:app.py init
 
+#安装：
 #下载pymysql
-#完成flask app到DB的ORM映射方式的链接下载flask-sqlalchemy
+#完成flask app到DB的ORM映射方式的链接:下载flask-sqlalchemy
 pip install flask-sqlalchemy
 #安装发布数据库命令的工具:flask-migrate
 pip install flask-migrate
+
+#配置数据库路径:mysql(数据库) + (驱动)pymysql://(用户名)user:(密码)password@(ip)host_ip:(端口号)port/(库名称)databasename
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:root@127.0.0.1:3306/Flask_demo'
+
+#创建ext包,在init.py中进行Sqlalchemy与app的关联
+#两种方式: 1.db = SQLAlchemy(app);  2.db = SQLAlchemy()  在工厂函数中关联:db.init_app(app)
