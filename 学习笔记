@@ -167,3 +167,37 @@ def fun():
 {% import 'macro.html' as xxx %}
 {{ xxx.宏名(参数) }}
 
+#蓝图：把视图及其他代码注册到蓝图，然后在工厂函数中把蓝图注册到应用。
+user_bp = Blueprint('user', __name__)
+
+@user_bp.route('/', methods=['GET', 'POST'])
+def user_center():
+    return render_template('user/show.html', users = users)
+#在init文件中注册蓝图到app中    
+app.register_blueprint(user_bp)
+
+#若反向解析指定路由则使用url_for('蓝图名.视图函数名')
+print(url_for('users.register'))
+
+
+#数据库(下载flask-script)
+pip install flask-script
+
+#使用Manager类进行命令管理:
+manager = Manager(app = app)
+manager.run()
+
+#终端开启服务器:
+app.py runserver  /  app.py runserver -h 0.0.0.1 -p 5001
+
+#自定义添加命令:
+@manager.command
+def init():
+    print('初始化')
+#终端运行:app.py init
+
+#下载pymysql
+#完成flask app到DB的ORM映射方式的链接下载flask-sqlalchemy
+pip install flask-sqlalchemy
+#安装发布数据库命令的工具:flask-migrate
+pip install flask-migrate
