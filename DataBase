@@ -1,6 +1,5 @@
 
-#数据库(下载flask-script)
-pip install flask-script
+#数据库的链接:
 
 #使用Manager类进行命令管理:
 manager = Manager(app = app)
@@ -16,11 +15,11 @@ def init():
 #终端运行:app.py init
 
 #1.安装：
-#安装pymysql
-#完成flask app到DB的ORM映射方式的链接:下载flask-sqlalchemy
-pip install flask-sqlalchemy
-#安装发布数据库命令的工具:flask-migrate
-pip install flask-migrate
+#安装flask:pip install flask
+#安装pymysql:pip install pymysql
+#安装flask app到DB的ORM映射方式的链接flask-sqlalchemy:pip install flask-sqlalchemy
+#安装发布数据库命令的工具flask-migrate:pip install flask-migrate
+#下载flask-script:pip install flask-script
 
 #2.配置数据库
 #mysql(数据库) + (驱动)pymysql://(用户名)user:(密码)password@(ip)host_ip:(端口号)port/(库名称)databasename
