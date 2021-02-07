@@ -46,3 +46,4 @@ class User(db.Model):
 #在app.py文件中导入模型:from apps.user.models import User
 #然后再终端使用命令:app.py db init,产生Migrations文件夹
 #再使用终端命令:app.py db migrate，自动产生一个版本文件
+
