@@ -19,6 +19,7 @@ def init():
 #安装flask app到DB的ORM映射方式的链接flask-sqlalchemy:pip install flask-sqlalchemy
 #安装发布数据库命令的工具flask-migrate:pip install flask-migrate
 #下载flask-script:pip install flask-script
+#安装MySQL等数据库,配置环境变量，本地测试连接成功后创建一个空DB
 
 #2.配置数据库
 #mysql(数据库) + (驱动)pymysql://(用户名)user:(密码)password@(ip)host_ip:(端口号)port/(库名称)databasename
@@ -47,7 +48,10 @@ class User(db.Model):
 #然后再终端使用命令:app.py db init,产生Migrations文件夹
 #再使用终端命令:app.py db migrate，自动产生一个版本文件
 
+
 数据库命令:
 net start mysql数据库名称 : 启动数据库服务
 net stop mysql : 停止数据库服务
 mysql -u root -p : 登录数据库
+
+
