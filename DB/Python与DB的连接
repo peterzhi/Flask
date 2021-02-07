@@ -47,3 +47,7 @@ class User(db.Model):
 #然后再终端使用命令:app.py db init,产生Migrations文件夹
 #再使用终端命令:app.py db migrate，自动产生一个版本文件
 
+数据库命令:
+net start mysql数据库名称 : 启动数据库服务
+net stop mysql : 停止数据库服务
+mysql -u root -p : 登录数据库
