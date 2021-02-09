@@ -180,5 +180,15 @@ app.register_blueprint(user_bp)
 #若反向解析指定路由则使用url_for('蓝图名.视图函数名')
 print(url_for('users.register'))
 
-
+#向数据库添加数据:
+# 1.找到模型，创建对象
+user = User()
+# 2.对象属性赋值
+user.username = u_name
+user.password = pwd
+user.phone = phone
+# 3.session中添加对象(类似缓存)
+db.session.add(user)
+# 4.提交数据
+db.session.commit()
 
