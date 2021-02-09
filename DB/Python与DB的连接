@@ -54,4 +54,4 @@ net start mysql数据库名称 : 启动数据库服务
 net stop mysql : 停止数据库服务
 mysql -u root -p : 登录数据库
 
-
+（注:连接完数据库后用app.py runserver运行）
