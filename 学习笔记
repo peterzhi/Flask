@@ -192,3 +192,8 @@ db.session.add(user)
 # 4.提交数据
 db.session.commit()
 
+#密码加密(不可逆)
+#模式：md5(32位) sha1(40位) sha256(64位) sha512(128位)
+用法:pwd = hashlib.sha256(password.encode('utf-8')).hexdigest()
+
+
