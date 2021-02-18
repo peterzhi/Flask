@@ -1,2 +1,3 @@
+
 #数据库查询:
 users = User.query.all() #相当于select * from User
