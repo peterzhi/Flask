@@ -1,0 +1,25 @@
+1、首先下载mysql8.0
+
+2.关闭现有mysql服务。管理员身份打开cmd窗口，进入到mysql目录下面，将mysql服务移除
+输入：mysqld -remove xxx，xxx为要卸载的mysql服务，可以在服务中查看（按键盘的win+R--->输入services.msc后确定进入服务列表
+
+3.启动管理员模式下的CMD，并将路径切换至mysql下的bin目录，添加mysql8.0服务
+mysqld --install mysql8.0
+
+4.再输入如下命令，进行初始化数据文件
+mysqld --initialize-insecure --user=mysql
+
+5.然后输入net start mysql8.0再次启动mysql
+
+6.然后用下面命令进入mysql管理界面,因为上面设置了跳过密码所以密码处不输入
+mysql -u root -p
+
+7.更改root密码
+先执行flush privileges;
+再执行ALTER user 'root'@'localhost' IDENTIFIED BY 'root';--修改密码为root
+
+8.先停止服务，然后重启mysql服务
+net stop mysql8.0
+net start mysql8.0
+
+9.进入cmd中，输入mysql，输入mysql -uroot -proot
