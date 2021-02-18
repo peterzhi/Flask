@@ -1,0 +1,11 @@
+1.查看数据库列表
+show databases;
+
+2.创建数据库
+create database test;
+
+3.打开数据库
+use test;
+
+4.列出数据库test的表格列表
+show tables;
