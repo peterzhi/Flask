@@ -1,5 +1,15 @@
 #数据库查询:
 users = User.query.all() #相当于select * from User
 
-#实现查询"select * from user where username='xxx'"
+user1 = User.query.get(2) #返回表中的第二个用户对象
+
+#有条件查询:
+#1.模型类.query.filter_by(字段名 = 值) <=> "select * from user where 字段名='xxx'",加上first():查询的第一条记录
 user_list = User.query.filter_by(username = u_name)
+
+#2.模型类.query.filter(模型名.字段名 == 值).all() [可多条件查询],返回的是一个列表
+#  模型类.query.filter(模型名.字段名 == 值).first(),返回的是一个对象
+#  模型类.query.filter(User.username.startwith('z')).all() <=> select * from user where username like 'z%'
+#  模型类.query.filter(User.username.endwith('z')).all() <=> select * from user where username like '%z'
+#  模型类.query.filter(User.username.contains('z')).all() <=> select * from user where username like '%z%'
+user1 = User.query.filter(User.username == 'wangwu').all()
