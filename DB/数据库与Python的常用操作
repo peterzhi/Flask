@@ -1,3 +1,5 @@
-
 #数据库查询:
 users = User.query.all() #相当于select * from User
+
+#实现查询"select * from user where username='xxx'"
+user_list = User.query.filter_by(username = u_name)
