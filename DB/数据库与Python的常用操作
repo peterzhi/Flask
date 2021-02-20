@@ -18,10 +18,23 @@ User.username.contains('')
 User.username.like(' ')
 User.username.in_(L'',''，''])
 User.username == 'zzz'
+
 2.检索字段为int/datetime类:
 User.age.__lt__(18)
 User.rdatetime.__gt__'.....' )
 User.age.__le__(18)
 User.age.__ge__(18)
 User.age.between(15,30)
-3.多个条件一起检索:与and_,或or_，非:not_
+
+3.多条件检索:与:and_(),或:or_()，非:not_()
+
+4.排序:order_by(参数):
+    1.参数为str:'字段名'(不能逆序);
+    2.参数为变量:模型名.字段名(顺序), -模型名.字段名(逆序);
+user_list = User.query.filter(User.username.contains('z')).order_by(User.id).all()
+
+5.限制:limit,offset()表示从头开始的偏移量 I
+user_list = User.query.limit(2).all()            默认获取前两条
+user_list = User.query.offset(2).limit(2).all()  跳过2条记录再获取两条记录
+
+
