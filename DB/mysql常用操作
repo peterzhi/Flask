@@ -9,3 +9,7 @@ use test;
 
 4.列出数据库test的表格列表
 show tables;
+
+5.删除记录
+delete from user where 字段名='xxxr';
+
