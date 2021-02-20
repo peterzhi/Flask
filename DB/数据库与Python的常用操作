@@ -3,13 +3,23 @@ users = User.query.all() #相当于select * from User
 
 user1 = User.query.get(2) #返回表中的第二个用户对象
 
-#有条件查询:
-#1.模型类.query.filter_by(字段名 = 值) <=> "select * from user where 字段名='xxx'",加上first():查询的第一条记录
+#条件查询:
+#模型类.query.filter(模型名.字段名 == 值).all() [可多条件查询],返回的是一个列表
+#模型类.query.filter(模型名.字段名 == 值).first(),返回的是一个对象
+#模型类.query.filter_by(字段名 = 值) <=> "select * from user where 字段名='xxx'",加上first():查询的第一条记录
 user_list = User.query.filter_by(username = u_name)
-
-#2.模型类.query.filter(模型名.字段名 == 值).all() [可多条件查询],返回的是一个列表
-#  模型类.query.filter(模型名.字段名 == 值).first(),返回的是一个对象
-#  模型类.query.filter(User.username.startwith('z')).all() <=> select * from user where username like 'z%'
-#  模型类.query.filter(User.username.endwith('z')).all() <=> select * from user where username like '%z'
-#  模型类.query.filter(User.username.contains('z')).all() <=> select * from user where username like '%z%'
 user1 = User.query.filter(User.username == 'wangwu').all()
+
+#模糊条件查询:
+#User.query.filter(User.username.startwith('z')).all() <=> select * from user where username like 'z%'
+#User.query.filter(User.username.endwith('z')).all() <=> select * from user where username like '%z'
+#User.query.filter(User.username.contains('z')).all() <=> select * from user where username like '%z%'
+#User.query.filter(User.username.like('z')).all() <=> select * from user where username like '%z%'
+
+多条件查询(or、and等):
+#select * from user where username like '%z%' or username like '%i%';
+#注意导入sqlalchemy包中的and_()、or_()！
+user1 = User.query.filter(or_(User.username.like('z'), (User.username.contains('i'))).all()
+
+
+
