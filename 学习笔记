@@ -92,7 +92,8 @@ url = url_for('index')
 #2.render_template()    (模板渲染)
 
 
-#模板语法(jinja2引擎)
+#模板语法(jinja2引擎), 参考手册介绍网址:https://jinjia.palletsprojects.com/en/2.11.x/templates/#super_blocks
+
 
 #声明变量:{{ var }}
 {%set username='peter' %} #全局变量
