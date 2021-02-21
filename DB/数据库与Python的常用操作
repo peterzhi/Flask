@@ -38,3 +38,26 @@ user_list = User.query.limit(2).all()            默认获取前两条
 user_list = User.query.offset(2).limit(2).all()  跳过2条记录再获取两条记录
 
 
+#删除操作
+#1.逻辑删除(定义table时添加一个字段'isdelete'表示数据是否可见)
+id = request.args.get(id)
+user = User.query.get(id)
+user.isdelete = True
+db.seesion.commit()
+
+#2.物理删除(从数据库中删除)
+id = request.args.get(id)
+user = User.query.get(id)
+db.seesion.delete(user)
+db.seesion.commit()
+
+
+#更新操作
+id = request.args.get(id)
+user = User.query.get(id)
+#修改对象属性
+user.phone = phone
+user.username = username
+#提交修改操作
+db.session.commit()
+
