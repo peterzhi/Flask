@@ -2,7 +2,7 @@
 show databases;
 
 2.创建数据库
-create database test;
+create database test charset=utf-8;
 
 3.打开数据库
 use test;
