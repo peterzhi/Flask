@@ -63,3 +63,11 @@ user.username = username
 #提交修改操作
 db.session.commit()
 
+
+#同步至数据库的外键关系(user表中的id作为Article表的外键)
+class Article(db.Model):
+user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+class User(db.Model):
+articles = db.relationship('Article', backref='user')
+
